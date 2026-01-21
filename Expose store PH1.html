@@ -14,23 +14,24 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f9fa;
-            padding: 20px;
+            padding: 15px; /* 移动端减少内边距 */
             max-width: 1200px;
             margin: 0 auto; /* 页面居中 */
         }
-        /* 标题样式：确保显示在顶部 */
+        /* 标题样式：适配移动端字体大小 */
         .shop-title {
             text-align: center;
             color: #2d3436;
-            margin-bottom: 30px;
-            font-size: 28px;
+            margin-bottom: 25px;
+            font-size: clamp(20px, 5vw, 28px); /* 自适应字体 */
             font-weight: bold;
         }
         /* 商品图片容器：网格布局，适配手机/电脑 */
         .product-gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 18px; /* 移动端减小间距 */
+            margin-bottom: 30px;
         }
         /* 商品卡片：美化+hover效果 */
         .product-card {
@@ -38,23 +39,24 @@
             border-radius: 10px;
             padding: 15px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* 增加阴影过渡 */
         }
         .product-card:hover {
-            transform: translateY(-5px); /* hover上移，更美观 */
+            transform: translateY(-5px); /* hover上移 */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15); /* 加深阴影，更立体 */
         }
         /* 商品图片：确保100%显示，不拉伸 */
         .product-img {
             width: 100%;
-            height: 220px;
+            height: 200px; /* 移动端减小高度 */
             object-fit: cover; /* 保持图片比例 */
             border-radius: 8px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
-        /* 商品描述：简洁明了 */
+        /* 商品描述：适配移动端字体 */
         .product-desc {
             color: #636e72;
-            font-size: 14px;
+            font-size: clamp(12px, 3vw, 14px); /* 自适应字体 */
             line-height: 1.5;
         }
         /* 加载提示：避免空白等待 */
@@ -63,6 +65,15 @@
             color: #636e72;
             font-size: 18px;
             margin: 50px 0;
+        }
+        /* 底部版权 */
+        .copyright {
+            text-align: center;
+            color: #868e96;
+            font-size: 12px;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #e9ecef;
         }
     </style>
 </head>
@@ -126,6 +137,9 @@
         </div>
     </div>
 
+    <!-- 底部版权 -->
+    <div class="copyright">© 2025 Expose Store PH - All Rights Reserved</div>
+
     <!-- 脚本：图片加载完成后隐藏加载提示 -->
     <script>
         // 监听所有商品图片加载
@@ -144,7 +158,7 @@
             // 图片加载失败（容错处理）
             img.onerror = () => {
                 loadedCount++;
-                img.src = 'https://picsum.photos/400/220'; // 加载失败显示默认图
+                img.src = 'https://picsum.photos/400/220?random=' + Math.random(); // 避免默认图重复
                 if (loadedCount === allImages.length) {
                     loadingText.style.display = 'none';
                 }

@@ -1,50 +1,155 @@
 <!DOCTYPE html>
-<!-- 声明文档类型为HTML5 -->
-<html lang="zh-CN">
-<!-- 网页的根标签，lang指定语言为中文 -->
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- 字符编码，避免乱码 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 适配手机端 -->
-    <title>我的第一个网站</title>
-    <!-- 网页标题（浏览器标签显示） -->
+    <title>Expose Store PH - Electronics Shop</title>
     <style>
-        /* CSS样式：美化页面 */
+        /* 全局样式：适配所有设备，避免空白 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
-            font-family: "微软雅黑", sans-serif; /* 字体 */
-            max-width: 800px; /* 页面最大宽度 */
-            margin: 0 auto; /* 居中显示 */
-            padding: 20px; /* 内边距 */
-            background-color: #f5f5f5; /* 背景色 */
-        }
-        h1 {
-            color: #2c3e50; /* 标题颜色 */
-            text-align: center; /* 标题居中 */
-        }
-        .content {
-            background-color: white; /* 内容区白色背景 */
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
             padding: 20px;
-            border-radius: 8px; /* 圆角 */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 阴影 */
+            max-width: 1200px;
+            margin: 0 auto; /* 页面居中 */
+        }
+        /* 标题样式：确保显示在顶部 */
+        .shop-title {
+            text-align: center;
+            color: #2d3436;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        /* 商品图片容器：网格布局，适配手机/电脑 */
+        .product-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        /* 商品卡片：美化+hover效果 */
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px); /* hover上移，更美观 */
+        }
+        /* 商品图片：确保100%显示，不拉伸 */
+        .product-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover; /* 保持图片比例 */
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+        /* 商品描述：简洁明了 */
+        .product-desc {
+            color: #636e72;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        /* 加载提示：避免空白等待 */
+        #loading {
+            text-align: center;
+            color: #636e72;
+            font-size: 18px;
+            margin: 50px 0;
         }
     </style>
 </head>
 <body>
-    <!-- 网页可见内容 -->
-    <h1>Welcome to Expose Store PH</h1>
-    <div class="content">
-        <!-- 添加一张图片（替换成你的图片地址） -->
-        <img src="images/1.jpg" alt="我的新图片" style="width:100%;border-radius:8px;">
-        <img src="images/2.jpg" alt="我的新图片" style="width:100%;border-radius:8px;">
-        <img src="images/3.jpg" alt="我的新图片" style="width:100%;border-radius:8px;">
-        <img src="images/4.jpg" alt="我的新图片" style="width:100%;border-radius:8px;">
-        <img src="images/5.jpg" alt="我的新图片" style="width:100%;border-radius:8px;">
-        <img src="images/6.jpg" alt="我的新图片" style="width:100%;border-radius:8px;">
-        <img src="images/7.jpg" alt="我的新图片" style="width:100%;border-radius:8px;">
-        <img src="images/8.jpg" alt="我的新图片" style="width:100%;border-radius:8px;">
-        <img src="images/9.jpg" alt="我的新图片" style="width:100%;border-radius:8px;">
-        <img src="images/10.jpg" alt="© 2025 - 2030 Expose Company" style="width:100%;border-radius:8px;">
+    <!-- 加载提示：图片加载完成前显示 -->
+    <div id="loading">Loading Products... 加载商品中...</div>
+
+    <h1 class="shop-title">Expose Store PH - Electronics Collection</h1>
+
+    <!-- 商品图片画廊：路径严格匹配GitHub仓库 -->
+    <div class="product-gallery">
+        <!-- 商品1：TikTok Shop相关 -->
+        <div class="product-card">
+            <img src="images/1.jpg" alt="TikTok Shop Coupons & TV Stick" class="product-img">
+            <p class="product-desc">TikTok Shop | TV Stick 1080p FULL HD | Free Coupons & Random Gifts</p>
+        </div>
+        <!-- 商品2：路由器+便携显示器 -->
+        <div class="product-card">
+            <img src="images/2.jpg" alt="WIFI Router & Portable Monitor" class="product-img">
+            <p class="product-desc">OPEN LINE WIFI ROUTER | 16.1" Portable Monitor 60Hz</p>
+        </div>
+        <!-- 商品3：曲面/平面显示器系列 -->
+        <div class="product-card">
+            <img src="images/3.jpg" alt="Curved & Flat Monitors" class="product-img">
+            <p class="product-desc">Monitor Series: 27inch 165hz / 24inch 100hz / Curved & Flat Options</p>
+        </div>
+        <!-- 商品4：4K智能电视 -->
+        <div class="product-card">
+            <img src="images/4.jpg" alt="4K Ultra HD Smart TV" class="product-img">
+            <p class="product-desc">TV SERIES | Smart TV & Digital TV | UHD 4K Ultra HD</p>
+        </div>
+        <!-- 商品5：电视盒子/电视棒 -->
+        <div class="product-card">
+            <img src="images/5.jpg" alt="TV Stick & TV Box" class="product-img">
+            <p class="product-desc">TV STICK SERIES | Android TV Stick | TXA8 / TX98 Models</p>
+        </div>
+        <!-- 商品6：便携式移动电源 -->
+        <div class="product-card">
+            <img src="images/6.jpg" alt="Portable Power Backup UPS" class="product-img">
+            <p class="product-desc">POWER SUPPLY | Portable Power Backup UPS Station</p>
+        </div>
+        <!-- 商品7：穿墙路由器 -->
+        <div class="product-card">
+            <img src="images/7.jpg" alt="300M Ethernet Router" class="product-img">
+            <p class="product-desc">ETHERNET ROUTER | 300M | Six Antenna Wall Penetrating King</p>
+        </div>
+        <!-- 商品8：安全保险箱系列 -->
+        <div class="product-card">
+            <img src="images/8.jpg" alt="Digital Safety Box" class="product-img">
+            <p class="product-desc">SAFE SERIES | Digital Safety Box | Cash Box & Simulation Book Design</p>
+        </div>
+        <!-- 商品9：触摸屏显示器 -->
+        <div class="product-card">
+            <img src="images/9.jpg" alt="Touchscreen Monitor" class="product-img">
+            <p class="product-desc">Touchscreen Monitor | 15.6inch 60hz</p>
+        </div>
+        <!-- 商品10：非触摸屏显示器 -->
+        <div class="product-card">
+            <img src="images/10.jpg" alt="Non-Touchscreen Monitors" class="product-img">
+            <p class="product-desc">Non-touchscreen | 11.6inch/14inch/15.6inch 60hz | 16.1inch 144hz</p>
+        </div>
     </div>
+
+    <!-- 脚本：图片加载完成后隐藏加载提示 -->
+    <script>
+        // 监听所有商品图片加载
+        const allImages = document.querySelectorAll('.product-img');
+        const loadingText = document.getElementById('loading');
+        let loadedCount = 0;
+
+        allImages.forEach(img => {
+            // 图片加载成功
+            img.onload = () => {
+                loadedCount++;
+                if (loadedCount === allImages.length) {
+                    loadingText.style.display = 'none'; // 所有图片加载完隐藏提示
+                }
+            };
+            // 图片加载失败（容错处理）
+            img.onerror = () => {
+                loadedCount++;
+                img.src = 'https://picsum.photos/400/220'; // 加载失败显示默认图
+                if (loadedCount === allImages.length) {
+                    loadingText.style.display = 'none';
+                }
+            };
+        });
+    </script>
 </body>
 </html>

@@ -6,72 +6,86 @@
     <title>Expose Store PH - Electronics Shop</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; background: #f8f9fa; padding: 15px; max-width: 1200px; margin: 0 auto; }
-        .shop-title { text-align: center; color: #2d3436; margin-bottom: 25px; font-size: clamp(20px, 5vw, 28px); font-weight: bold; }
-        .product-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; margin-bottom: 30px; }
-        .product-card { background: white; border-radius: 10px; padding: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .product-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.15); }
-        .product-img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
-        .product-desc { color: #636e72; font-size: clamp(12px, 3vw, 14px); line-height: 1.5; }
-        #loading { text-align: center; color: #636e72; font-size: 18px; margin: 50px 0; }
-        .copyright { text-align: center; color: #868e96; font-size: 12px; margin-top: 20px; padding-top: 15px; border-top: 1px solid #e9ecef; }
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: #f8f9fa;
+            padding: 20px;
+            max-width: 1000px; /* 控制页面最大宽度，避免太宽 */
+            margin: 0 auto; /* 页面居中 */
+        }
+        /* 标题样式 */
+        .shop-title {
+            text-align: center;
+            color: #2d3436;
+            margin-bottom: 30px;
+            font-size: 32px;
+            font-weight: bold;
+        }
+        /* 核心修改：大尺寸图片容器，去掉小卡片，直接全屏显示图片 */
+        .product-gallery {
+            display: flex;
+            flex-direction: column; /* 图片垂直排列 */
+            gap: 20px; /* 图片之间留间距 */
+        }
+        /* 大尺寸图片样式（和你参考图一致） */
+        .product-img {
+            width: 100%; /* 占满容器宽度 */
+            height: auto; /* 高度自动，保持图片比例，不会变形 */
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15); /* 轻微阴影，更立体 */
+        }
+        /* 加载提示 */
+        #loading {
+            text-align: center;
+            color: #636e72;
+            font-size: 18px;
+            margin: 50px 0;
+        }
+        /* 版权信息 */
+        .copyright {
+            text-align: center;
+            color: #868e96;
+            font-size: 14px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+        }
     </style>
 </head>
 <body>
     <div id="loading">Loading Products... 加载商品中...</div>
-    <h1 class="shop-title">Expose Store PH - Electronics Collection</h1>
+
+    <h1 class="shop-title">Welcome to Expose Store PH</h1>
+
+    <!-- 大尺寸图片展示区 -->
     <div class="product-gallery">
-        <!-- 关键修改：去掉images/，直接写图片名（因为图片在根目录） -->
-        <div class="product-card">
-            <img src="1.jpg" alt="TikTok Shop Coupons & TV Stick" class="product-img">
-            <p class="product-desc">TikTok Shop | TV Stick 1080p FULL HD | Free Coupons & Random Gifts</p>
-        </div>
-        <div class="product-card">
-            <img src="2.jpg" alt="WIFI Router & Portable Monitor" class="product-img">
-            <p class="product-desc">OPEN LINE WIFI ROUTER | 16.1" Portable Monitor 60Hz</p>
-        </div>
-        <div class="product-card">
-            <img src="3.jpg" alt="Curved & Flat Monitors" class="product-img">
-            <p class="product-desc">Monitor Series: 27inch 165hz / 24inch 100hz / Curved & Flat Options</p>
-        </div>
-        <div class="product-card">
-            <img src="4.jpg" alt="4K Ultra HD Smart TV" class="product-img">
-            <p class="product-desc">TV SERIES | Smart TV & Digital TV | UHD 4K Ultra HD</p>
-        </div>
-        <div class="product-card">
-            <img src="5.jpg" alt="TV Stick & TV Box" class="product-img">
-            <p class="product-desc">TV STICK SERIES | Android TV Stick | TXA8 / TX98 Models</p>
-        </div>
-        <div class="product-card">
-            <img src="6.jpg" alt="Portable Power Backup UPS" class="product-img">
-            <p class="product-desc">POWER SUPPLY | Portable Power Backup UPS Station</p>
-        </div>
-        <div class="product-card">
-            <img src="7.jpg" alt="300M Ethernet Router" class="product-img">
-            <p class="product-desc">ETHERNET ROUTER | 300M | Six Antenna Wall Penetrating King</p>
-        </div>
-        <div class="product-card">
-            <img src="8.jpg" alt="Digital Safety Box" class="product-img">
-            <p class="product-desc">SAFE SERIES | Digital Safety Box | Cash Box & Simulation Book Design</p>
-        </div>
-        <div class="product-card">
-            <img src="9.jpg" alt="Touchscreen Monitor" class="product-img">
-            <p class="product-desc">Touchscreen Monitor | 15.6inch 60hz</p>
-        </div>
-        <div class="product-card">
-            <img src="10.jpg" alt="Non-Touchscreen Monitors" class="product-img">
-            <p class="product-desc">Non-touchscreen | 11.6inch/14inch/15.6inch 60hz | 16.1inch 144hz</p>
-        </div>
+        <!-- 每张图片都全屏显示，去掉小卡片和文字描述 -->
+        <img src="1.jpg" alt="Expose Store PH Product 1" class="product-img">
+        <img src="2.jpg" alt="Expose Store PH Product 2" class="product-img">
+        <img src="3.jpg" alt="Expose Store PH Product 3" class="product-img">
+        <img src="4.jpg" alt="Expose Store PH Product 4" class="product-img">
+        <img src="5.jpg" alt="Expose Store PH Product 5" class="product-img">
+        <img src="6.jpg" alt="Expose Store PH Product 6" class="product-img">
+        <img src="7.jpg" alt="Expose Store PH Product 7" class="product-img">
+        <img src="8.jpg" alt="Expose Store PH Product 8" class="product-img">
+        <img src="9.jpg" alt="Expose Store PH Product 9" class="product-img">
+        <img src="10.jpg" alt="Expose Store PH Product 10" class="product-img">
     </div>
+
     <div class="copyright">© 2025 Expose Store PH - All Rights Reserved</div>
+
     <script>
+        // 图片加载完成后隐藏提示
         const allImages = document.querySelectorAll('.product-img');
         const loadingText = document.getElementById('loading');
         let loadedCount = 0;
+
         allImages.forEach(img => {
             img.onload = img.onerror = () => {
                 loadedCount++;
-                if (loadedCount === allImages.length) loadingText.style.display = 'none';
+                if (loadedCount === allImages.length) {
+                    loadingText.style.display = 'none';
+                }
             };
         });
     </script>
